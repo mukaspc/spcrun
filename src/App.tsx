@@ -1,8 +1,15 @@
 import React from 'react';
+// import { Routes, Route, Link } from 'react-router-dom';
+
 import './App.css';
+import LoginScreen from './screens/LoginScreen';
 
 function App() {
-    return <h1 className="text-3xl font-bold underline sm:text-xl">Hello world!</h1>;
+  return (
+    <main>
+      <LoginScreen />
+    </main>
+  );
 }
 
 export default App;
