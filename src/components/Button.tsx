@@ -4,6 +4,7 @@ interface ButtonProps {
   type: string;
   optionalClass?: string;
   children: HTMLElement | string;
+  onClick: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 const BUTTON_TYPES: { [key: string]: string } = {
@@ -11,7 +12,7 @@ const BUTTON_TYPES: { [key: string]: string } = {
   secondary: 'bg-white text-green-400 border-green-400 hover:border-green-500 hover:text-green-500',
 };
 
-function Button({ type, optionalClass, children }: ButtonProps) {
+function Button({ type, optionalClass, children, onClick }: ButtonProps) {
   const getKeyValue =
     <T extends object, U extends keyof T>(obj: T) =>
     (key: U) =>
@@ -20,6 +21,7 @@ function Button({ type, optionalClass, children }: ButtonProps) {
 
   return (
     <button
+      onClick={onClick}
       className={`text-center py-2 px-8 rounded-sm font-medium border text-sm transition-colors ${buttonType} ${
         optionalClass ? optionalClass : ''
       }

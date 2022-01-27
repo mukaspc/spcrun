@@ -9,6 +9,7 @@ interface InputProps {
   autoFillOff?: boolean;
   requiredField?: boolean;
   disabledField?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function Input({
@@ -20,6 +21,7 @@ function Input({
   autoFillOff,
   disabledField,
   requiredField,
+  onChange,
 }: InputProps) {
   const inputContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -61,6 +63,7 @@ function Input({
         className="py-1 w-full block text-sm text-green-600 font-medium outline-none placeholder:font-normal placeholder:text-gray-200 disabled:bg-gray-50"
         onFocus={() => focusInputHanlder()}
         onBlur={() => focusInputHanlder()}
+        onChange={onChange}
       />
     </div>
   );
