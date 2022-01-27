@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import { showErrorMessage } from '../translations/firebaseErrors';
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@firebase/auth';
-// import { login } from "./features/userSlice";
-
-import Logo from '../components/Logo';
-import Input from '../components/Input';
+import { useAppDispatch } from '../app/hooks';
+import { login } from '../features/user/userSlice';
+import Logo from '../common/Logo';
+import Input from '../common/Input';
 import loginBackgroundImage from '../assets/img/bg-login-screen.jpg';
-import Button from '../components/Button';
+import Button from '../common/Button';
 
 function LoginScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [validateInfo, setValidateInfo] = useState('');
+  const dispatch = useAppDispatch();
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [validateInfo, setValidateInfo] = useState<string>('');
 
-  const register = (event: React.MouseEvent<HTMLElement>): void => {
+  const registerInApp = (event: React.MouseEvent<HTMLElement>): void => {
     event.preventDefault();
 
     if (!email || !password) {
@@ -23,15 +24,20 @@ function LoginScreen() {
     }
 
     createUserWithEmailAndPassword(auth, email, password)
-      // .then((cred) => {
-      //   console.log(event.target, email, password, cred);
-      // })
+      .then((cred) => {
+        dispatch(
+          login({
+            email: cred.user.email,
+            uid: cred.user.uid,
+          }),
+        );
+      })
       .catch((err) => {
         setValidateInfo(showErrorMessage(err.code));
       });
   };
 
-  const login = (event: React.MouseEvent<HTMLElement>): void => {
+  const loginToApp = (event: React.MouseEvent<HTMLElement>): void => {
     event.preventDefault();
 
     if (!email || !password) {
@@ -87,10 +93,10 @@ function LoginScreen() {
           )}
 
           <div className="mt-10">
-            <Button type="primary" optionalClass="mr-3" onClick={login}>
+            <Button type="primary" optionalClass="mr-3" onClick={loginToApp}>
               Login
             </Button>
-            <Button type="secondary" onClick={register}>
+            <Button type="secondary" onClick={registerInApp}>
               Sign Up
             </Button>
           </div>
