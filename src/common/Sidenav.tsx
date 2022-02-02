@@ -1,5 +1,6 @@
 import React from 'react';
 import 'tw-elements';
+import Avatar from './Avatar';
 
 function Header() {
   return (
@@ -120,7 +121,9 @@ function Header() {
                 </div>
               </div>
               <div className="flex items-center p-2 mt-12 space-x-4 justify-self-end">
-                <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-lg" />
+                <div className="w-12 h-12 rounded-lg overflow-hidden">
+                  <Avatar />
+                </div>
                 <div>
                   <h2 className="text-lg font-semibold">Leroy Jenkins</h2>
                   <span className="flex items-center space-x-1">

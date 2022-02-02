@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidenav from './Sidenav';
 import Logo from './Logo';
+import Avatar from './Avatar';
 
 function Header() {
   return (
@@ -52,20 +53,15 @@ function Header() {
           <div className="flex items-center relative">
             <div className="dropdown relative">
               <a
-                className="dropdown-toggle flex items-center hidden-arrow"
+                className="dropdown-toggle flex items-center hidden-arrow rounded-full overflow-hidden"
                 href="#"
                 id="dropdownMenuButton2"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                style={{ height: '30px', width: '30px' }}
               >
-                <img
-                  src="https://mdbootstrap.com/img/new/avatars/2.jpg"
-                  className="rounded-full"
-                  style={{ height: '30px', width: '30px' }}
-                  alt=""
-                  loading="lazy"
-                />
+                <Avatar />
               </a>
               <ul
                 className="
