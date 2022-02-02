@@ -21,6 +21,8 @@ function App() {
           login({
             email: user.email,
             uid: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
           }),
         );
       } else {
@@ -31,7 +33,11 @@ function App() {
     setTimeout(() => setCheckUserOnStart(true), 1000);
   }, []);
 
-  return <main className="app">{checkUserOnStart ? !user ? <LoginScreen /> : <DashboardScreen /> : <Spinner />}</main>;
+  return (
+    <main className="app bg-gray-200 w-screen h-screen">
+      {checkUserOnStart ? !user ? <LoginScreen /> : <DashboardScreen /> : <Spinner />}
+    </main>
+  );
 }
 
 export default App;

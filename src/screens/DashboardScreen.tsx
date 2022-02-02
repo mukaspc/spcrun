@@ -1,7 +1,8 @@
 import React from 'react';
+import Header from '../common/Header';
 
 function DashboardScreen() {
-  return <div>this is dashboard</div>;
+  return <Header />;
 }
 
 export default DashboardScreen;
