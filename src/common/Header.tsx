@@ -15,7 +15,7 @@ function Header() {
   justify-between
   py-2
   text-gray-500
-  navbar navbar-expand-lg navbar-light
+  navbar navbar-light
   "
       >
         <div className="container-fluid w-full flex flex-wrap items-center justify-between pr-4 pl-2">
@@ -53,7 +53,7 @@ function Header() {
           <div className="flex items-center relative">
             <div className="dropdown relative">
               <a
-                className="dropdown-toggle flex items-center hidden-arrow rounded-full overflow-hidden"
+                className="dropdown-toggle flex items-center hidden-arrow rounded-full overflow-hidden  bg-gray-300"
                 href="#"
                 id="dropdownMenuButton2"
                 role="button"

@@ -45,13 +45,9 @@ function LoginScreen() {
       return;
     }
 
-    signInWithEmailAndPassword(auth, email, password)
-      // .then((cred) => {
-      //   console.log('HURA!', cred);
-      // })
-      .catch((err) => {
-        setValidateInfo(showErrorMessage(err.code));
-      });
+    signInWithEmailAndPassword(auth, email, password).catch((err) => {
+      setValidateInfo(showErrorMessage(err.code));
+    });
   };
 
   return (
@@ -88,7 +84,7 @@ function LoginScreen() {
 
           {validateInfo && (
             <div className="mt-2">
-              <span className="text-red-400 text-sm">{validateInfo}</span>
+              <span className="text-red-400 text-sm leading-none">{validateInfo}</span>
             </div>
           )}
 

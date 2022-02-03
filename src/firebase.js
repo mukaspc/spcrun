@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getStorage } from 'firebase/storage';
 // import { getFirestore, collection } from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
 
@@ -22,9 +23,15 @@ const db = getFirestore(firebaseApp);
 // collection ref
 // const colRef = collection(db, '');
 
+// init storage
+const storage = getStorage();
+const metadata = {
+  contentType: 'image/jpeg',
+};
+
 // init auth
 const auth = getAuth(firebaseApp);
 
-export { auth };
+export { auth, storage, metadata };
 // export { auth, colRef };
 export default db;

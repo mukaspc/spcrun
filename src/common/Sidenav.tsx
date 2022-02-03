@@ -1,8 +1,12 @@
 import React from 'react';
 import 'tw-elements';
+import { useAppSelector } from '../app/hooks';
+import { selectUser } from '../features/user/userSlice';
 import Avatar from './Avatar';
 
 function Header() {
+  const user: any = useAppSelector(selectUser);
+
   return (
     <div className="flex space-x-2">
       <div>
@@ -125,12 +129,7 @@ function Header() {
                   <Avatar />
                 </div>
                 <div>
-                  <h2 className="text-lg font-semibold">Leroy Jenkins</h2>
-                  <span className="flex items-center space-x-1">
-                    <a href="#" className="text-xs hover:underline text-gray-600">
-                      View profile
-                    </a>
-                  </span>
+                  <h2 className="text-lg font-semibold leading-tight">{user.displayName}</h2>
                 </div>
               </div>
             </div>
