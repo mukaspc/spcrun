@@ -2,6 +2,7 @@ import React from 'react';
 import 'tw-elements';
 import { useAppSelector } from '../app/hooks';
 import { selectUser } from '../features/user/userSlice';
+import { logoutFromApp } from '../features/user/logoutFromApp';
 import Avatar from './Avatar';
 
 function Header() {
@@ -108,7 +109,7 @@ function Header() {
                         <span>Settings</span>
                       </a>
                     </li>
-                    <li className="rounded-sm">
+                    <li className="rounded-sm hover:bg-gray-100 transition-colors" onClick={() => logoutFromApp()}>
                       <a href="#" className="flex items-center p-2 space-x-3 rounded-md">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-import { onAuthStateChanged } from '@firebase/auth';
+import { onAuthStateChanged, signOut } from '@firebase/auth';
 import React, { useEffect, useState } from 'react';
 // import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
@@ -26,12 +26,14 @@ function App() {
           }),
         );
       } else {
-        dispatch(logout());
+        signOut(auth).then(() => {
+          dispatch(logout());
+        });
       }
     });
 
     setTimeout(() => setCheckUserOnStart(true), 1000);
-  }, []);
+  }, [auth]);
 
   return (
     <main className="app bg-gray-200 w-screen h-screen">

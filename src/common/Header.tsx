@@ -2,6 +2,7 @@ import React from 'react';
 import Sidenav from './Sidenav';
 import Logo from './Logo';
 import Avatar from './Avatar';
+import { logoutFromApp } from '../features/user/logoutFromApp';
 
 function Header() {
   return (
@@ -53,7 +54,7 @@ function Header() {
           <div className="flex items-center relative">
             <div className="dropdown relative">
               <a
-                className="dropdown-toggle flex items-center hidden-arrow rounded-full overflow-hidden  bg-gray-300"
+                className="dropdown-toggle flex items-center hidden-arrow rounded-full overflow-hidden bg-gray-300"
                 href="#"
                 id="dropdownMenuButton2"
                 role="button"
@@ -88,7 +89,7 @@ function Header() {
   "
                 aria-labelledby="dropdownMenuButton2"
               >
-                <li>
+                <li onClick={() => logoutFromApp()}>
                   <a
                     className="
         dropdown-item
@@ -105,47 +106,7 @@ function Header() {
       "
                     href="#"
                   >
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="
-        dropdown-item
-        text-sm
-        py-2
-        px-4
-        font-normal
-        block
-        w-full
-        whitespace-nowrap
-        bg-transparent
-        text-gray-700
-        hover:bg-gray-100
-      "
-                    href="#"
-                  >
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="
-        dropdown-item
-        text-sm
-        py-2
-        px-4
-        font-normal
-        block
-        w-full
-        whitespace-nowrap
-        bg-transparent
-        text-gray-700
-        hover:bg-gray-100
-      "
-                    href="#"
-                  >
-                    Something else here
+                    Logout
                   </a>
                 </li>
               </ul>
