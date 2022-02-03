@@ -7,7 +7,7 @@ import { logoutFromApp } from '../features/user/logoutFromApp';
 function Header() {
   return (
     <>
-      <nav className="relative w-full flex flex-wrap items-center justify-between py-2 text-gray-500 navbar navbar-light">
+      <nav className="relative w-full flex flex-wrap items-center justify-between pt-4 pb-2 text-gray-500 navbar navbar-light">
         <div className="container-fluid w-full flex flex-wrap items-center justify-between pr-4 pl-2">
           <div className="flex items-center">
             <button

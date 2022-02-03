@@ -4,6 +4,7 @@ import PreferencesScreen from './PreferencesScreen';
 import { useAppSelector } from '../app/hooks';
 import { selectUser } from '../features/user/userSlice';
 import Container from '../common/Container';
+import Wrapper from '../common/Wrapper';
 
 function DashboardScreen() {
   const user: any = useAppSelector(selectUser);
@@ -12,6 +13,7 @@ function DashboardScreen() {
   return displayName ? (
     <Container>
       <Header />
+      <Wrapper>{'body content'}</Wrapper>
     </Container>
   ) : (
     <PreferencesScreen />
