@@ -6,6 +6,21 @@
 html,
 body {
   font-family: 'Roboto', sans-serif;
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+textarea::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 5px;
+}
+textarea::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: #22c55e;
+}
+textarea::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 .custom__input::before {

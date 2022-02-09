@@ -40,11 +40,17 @@ function Input({
     input!.focus();
   };
 
-  const focusInputHanlder = (): void => {
+  const handleInputFocus = (status = true): void => {
     const container = inputContainerRef.current;
     const inputClassVisible = 'custom__input--visible';
 
-    container!.classList.toggle(inputClassVisible);
+    console.log('cc', container);
+
+    if (status) {
+      container!.classList.add(inputClassVisible);
+    } else {
+      container!.classList.remove(inputClassVisible);
+    }
   };
 
   return (
@@ -70,8 +76,8 @@ function Input({
         disabled={disabled}
         autoComplete={`${autoFillOff ? 'off' : ''}`}
         className="py-1 w-full block text-sm text-green-600 font-medium outline-none placeholder:font-normal placeholder:text-gray-200 disabled:bg-gray-50"
-        onFocus={() => focusInputHanlder()}
-        onBlur={() => focusInputHanlder()}
+        onFocus={() => handleInputFocus()}
+        onBlur={() => handleInputFocus(false)}
         onChange={onChange}
       />
     </div>

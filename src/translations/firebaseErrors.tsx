@@ -119,6 +119,7 @@ const authErrors: { [key: string]: string } = {
   'weak-password': 'The password must be 6 characters long or more.',
   'web-storage-unsupported': 'This browser is not supported or 3rd party cookies and data may be disabled.',
   'empty-data': 'Please complete all fields',
+  'empty-required': 'Please complete all required fields',
 };
 
 const showErrorMessage = (code: string): string => {

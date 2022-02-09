@@ -5,7 +5,7 @@ interface ContainerProps {
 }
 
 function Container({ children }: ContainerProps) {
-  return <section className="container lg:max-w-screen-lg mx-auto">{children}</section>;
+  return <section className="container lg:max-w-screen-lg mx-auto pb-4">{children}</section>;
 }
 
 export default Container;

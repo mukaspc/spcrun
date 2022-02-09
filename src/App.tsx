@@ -35,7 +35,7 @@ function App() {
   }, [auth]);
 
   return (
-    <main className="app bg-gray-200 w-screen h-screen">
+    <main className="app bg-gray-200 w-full h-full">
       {checkUserOnStart ? !user ? <LoginScreen /> : <DashboardScreen /> : <Spinner />}
     </main>
   );
