@@ -1,5 +1,4 @@
 import React from 'react';
-import 'tw-elements';
 import { useAppSelector } from '../app/hooks';
 import { selectUser } from '../features/user/userSlice';
 import { logoutFromApp } from '../features/user/logoutFromApp';
@@ -13,11 +12,11 @@ function Header() {
       <div>
         <div
           className="offcanvas offcanvas-start fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 border-none w-60"
-          id="offcanvasExample"
-          aria-labelledby="offcanvasExampleLabel"
+          id="navigationTarget"
+          aria-labelledby="navigationLabel"
         >
           <div className="offcanvas-header flex items-center justify-between p-4 pb-0">
-            <h5 className="offcanvas-title mb-0 leading-normal font-semibold" id="offcanvasExampleLabel">
+            <h5 className="offcanvas-title mb-0 leading-normal font-semibold" id="navigationLabel">
               Navigation 🔥
             </h5>
             <button

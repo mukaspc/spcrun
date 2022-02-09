@@ -17,9 +17,19 @@ body {
   width: 4px;
   height: calc(100% + 2px);
   background-color: #21c45d;
-  transform: translateY(-100px);
+  transform: translateY(-150px);
 }
 
 .custom__input--visible::before {
   transform: translateY(0);
+}
+
+.custom__input input::-webkit-outer-spin-button,
+.custom__input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom__input input[type='number'] {
+  -moz-appearance: textfield;
 }

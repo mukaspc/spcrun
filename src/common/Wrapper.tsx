@@ -5,7 +5,7 @@ interface WrapperProps {
 }
 
 function Wrapper({ children }: WrapperProps) {
-  return <section className="bg-white mt-3 p-4 min-h-[350px] rounded-3xl">{children}</section>;
+  return <section className="bg-white mt-3 p-5 min-h-[350px] rounded-3xl">{children}</section>;
 }
 
 export default Wrapper;

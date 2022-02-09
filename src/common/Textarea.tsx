@@ -1,36 +1,34 @@
 import React, { useRef } from 'react';
 
-interface InputProps {
+interface TextareaProps {
   id?: string;
-  type: string;
-  label: string;
   name: string;
-  min?: number;
-  max?: number;
+  label: string;
+  minlength?: number;
+  maxlength?: number;
   placeholder?: string;
   optionalClass?: string;
   autoFillOff?: boolean;
   requiredField?: boolean;
   disabledField?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-function Input({
+function Textarea({
   id,
-  type,
   label,
   name,
-  min,
-  max,
+  minlength,
+  maxlength,
   placeholder,
   optionalClass,
   autoFillOff,
   disabledField,
   requiredField,
   onChange,
-}: InputProps) {
+}: TextareaProps) {
   const inputContainerRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const required = !!requiredField || false;
   const disabled = !!disabledField || false;
 
@@ -58,24 +56,24 @@ function Input({
       <label htmlFor={name} className="block text-sm text-black cursor-pointer">
         {label}
       </label>
-      <input
+      <textarea
         ref={inputRef}
         id={id}
         name={name}
-        type={type}
-        min={min}
-        max={max}
+        minLength={minlength}
+        maxLength={maxlength}
         placeholder={placeholder}
         required={required}
         disabled={disabled}
         autoComplete={`${autoFillOff ? 'off' : ''}`}
-        className="py-1 w-full block text-sm text-green-600 font-medium outline-none placeholder:font-normal placeholder:text-gray-200 disabled:bg-gray-50"
+        className="py-1 w-full block text-sm text-green-600 font-medium outline-none placeholder:font-normal placeholder:text-gray-200 disabled:bg-gray-50 h-24"
+        style={{ resize: 'none' }}
         onFocus={() => focusInputHanlder()}
         onBlur={() => focusInputHanlder()}
         onChange={onChange}
-      />
+      ></textarea>
     </div>
   );
 }
 
-export default Input;
+export default Textarea;

@@ -14,8 +14,8 @@ function Header() {
               className="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
               type="button"
               data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasExample"
-              aria-controls="offcanvasExample"
+              data-bs-target="#navigationTarget"
+              aria-controls="navigationTarget"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
