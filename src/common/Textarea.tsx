@@ -42,8 +42,6 @@ function Textarea({
     const container = inputContainerRef.current;
     const inputClassVisible = 'custom__input--visible';
 
-    console.log('cc', container);
-
     if (status) {
       container!.classList.add(inputClassVisible);
     } else {

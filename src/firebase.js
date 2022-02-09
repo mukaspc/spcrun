@@ -1,8 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
-// import { getFirestore, collection } from 'firebase/firestore';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, collection } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -21,7 +20,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 // collection ref
-// const colRef = collection(db, '');
+const collectionTrainingsRef = collection(db, 'trenings');
 
 // init storage
 const storage = getStorage();
@@ -32,6 +31,5 @@ const metadata = {
 // init auth
 const auth = getAuth(firebaseApp);
 
-export { auth, storage, metadata };
-// export { auth, colRef };
+export { auth, storage, metadata, collectionTrainingsRef };
 export default db;

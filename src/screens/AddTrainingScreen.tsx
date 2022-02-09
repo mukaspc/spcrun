@@ -3,8 +3,13 @@ import Input from '../common/Input';
 import Textarea from '../common/Textarea';
 import Button from '../common/Button';
 import { showErrorMessage } from '../translations/firebaseErrors';
+import { addDoc, serverTimestamp } from '@firebase/firestore';
+import { collectionTrainingsRef } from '../firebase';
+import { useAppSelector } from '../app/hooks';
+import { selectUser } from '../features/user/userSlice';
 
 function AddTreningScreen() {
+  const user: any = useAppSelector(selectUser);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [distance, setDistance] = useState('');
@@ -18,12 +23,21 @@ function AddTreningScreen() {
       setValidateInfo(showErrorMessage('empty-required'));
       return;
     }
+
+    addDoc(collectionTrainingsRef, {
+      user: user.uid,
+      timestamp: serverTimestamp(),
+      date,
+      time,
+      distance,
+      comments: comments || '',
+    });
   };
   return (
     <div>
-      <h1 className="text-2xl mb-4">Add trening 🔥</h1>
+      <h1 className="text-2xl mb-4">Add training 🔥</h1>
 
-      <span className="block text-sm text-gray-400">Type your trening details.</span>
+      <span className="block text-sm text-gray-400">Enter your training data.</span>
       <div className="flex flex-col md:flex-row">
         <div className="mt-4 w-full md:w-6/12">
           <form>

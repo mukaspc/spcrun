@@ -6,8 +6,8 @@ import { selectUser } from '../features/user/userSlice';
 import Container from '../common/Container';
 import Wrapper from '../common/Wrapper';
 import { Routes, Route, Link } from 'react-router-dom';
-import TreningListScreen from './TreningListScreen';
-import AddTreningScreen from './AddTreningScreen';
+import TrainingListScreen from './TrainingListScreen';
+import AddTrainingScreen from './AddTrainingScreen';
 
 function DashboardScreen() {
   const user: any = useAppSelector(selectUser);
@@ -22,14 +22,14 @@ function DashboardScreen() {
             path="/"
             element={
               <>
-                <Link to="/trening-list">trening list from dashboard</Link>
+                <Link to="/training-list">training list from dashboard</Link>
                 <br />
-                <Link to="/add-trening">add</Link>
+                <Link to="/add-training">add</Link>
               </>
             }
           ></Route>
-          <Route path="/trening-list" element={<TreningListScreen />}></Route>
-          <Route path="/add-trening" element={<AddTreningScreen />}></Route>
+          <Route path="/training-list" element={<TrainingListScreen />}></Route>
+          <Route path="/add-training" element={<AddTrainingScreen />}></Route>
         </Routes>
       </Wrapper>
     </Container>

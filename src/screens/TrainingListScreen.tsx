@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TreningListScreen() {
+function TrainingListScreen() {
   return (
     <div>
       <h1 className="text-2xl mb-4">Trening List</h1>
@@ -124,4 +124,4 @@ function TreningListScreen() {
   );
 }
 
-export default TreningListScreen;
+export default TrainingListScreen;
