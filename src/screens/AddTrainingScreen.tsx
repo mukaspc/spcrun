@@ -5,10 +5,15 @@ import Button from '../common/Button';
 import { showErrorMessage } from '../translations/firebaseErrors';
 import { addDoc, serverTimestamp } from '@firebase/firestore';
 import { collectionTrainingsRef } from '../firebase';
-import { useAppSelector } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { selectUser } from '../features/user/userSlice';
+import { load } from '../features/loading/loadingSlice';
+import { useNavigate } from 'react-router-dom';
 
 function AddTreningScreen() {
+  const loadTime = 1000;
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const user: any = useAppSelector(selectUser);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -34,7 +39,15 @@ function AddTreningScreen() {
       distance,
       comments: comments || '',
     });
+
+    dispatch(load(true));
+
+    setTimeout(() => {
+      dispatch(load(false));
+      navigate('/training-list');
+    }, loadTime);
   };
+
   return (
     <div>
       <h1 className="text-2xl mb-4">Add training 🔥</h1>
