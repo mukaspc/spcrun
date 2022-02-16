@@ -4,6 +4,7 @@ import './App.css';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { login, logout, selectUser } from './features/user/userSlice';
 import { auth } from './firebase';
+import { useNavigate } from 'react-router-dom';
 import DashboardScreen from './screens/DashboardScreen';
 import LoginScreen from './screens/LoginScreen';
 import Spinner from './common/Spinner';
@@ -12,6 +13,7 @@ function App() {
   const [checkUserOnStart, setCheckUserOnStart] = useState(false);
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -27,6 +29,7 @@ function App() {
       } else {
         signOut(auth).then(() => {
           dispatch(logout());
+          navigate('/');
         });
       }
     });
