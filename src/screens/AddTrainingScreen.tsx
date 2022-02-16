@@ -24,6 +24,8 @@ function AddTreningScreen() {
       return;
     }
 
+    setValidateInfo('');
+
     addDoc(collectionTrainingsRef, {
       user: user.uid,
       timestamp: serverTimestamp(),
@@ -41,26 +43,35 @@ function AddTreningScreen() {
       <div className="flex flex-col md:flex-row">
         <div className="mt-4 w-full md:w-6/12">
           <form>
-            <Input type="date" label="Date *" name="date" requiredField onChange={(e) => setDate(e.target.value)} />
             <Input
-              type="number"
-              min={0}
-              label="Time *"
-              name="time"
-              placeholder="Running time in minutes"
+              masked={false}
+              type="date"
+              label="Date *"
+              name="date"
               requiredField
-              autoFillOff
-              onChange={(e) => setTime(e.target.value)}
+              onChange={(e) => setDate(e.target.value)}
             />
             <Input
-              type="number"
-              min={0}
-              label="Distance *"
-              name="distance"
-              placeholder="Running distance in kilometers"
+              masked={true}
+              mask="00:00"
+              type="text"
+              label="Time *"
+              name="time"
+              placeholder="00:00"
               requiredField
               autoFillOff
-              onChange={(e) => setDistance(e.target.value)}
+              onAccept={(_e, mask) => setTime(mask.value)}
+            />
+            <Input
+              masked={true}
+              mask="00.00"
+              type="text"
+              label="Distance *"
+              name="distance"
+              placeholder="00.00"
+              requiredField
+              autoFillOff
+              onAccept={(_e, mask) => setDistance(mask.value)}
             />
             <Textarea
               name="comments"
@@ -77,7 +88,7 @@ function AddTreningScreen() {
 
             <div className="mt-10">
               <Button type="primary" optionalClass="mr-3" onClick={addTraningDataToFirebase}>
-                Login
+                Add trening
               </Button>
             </div>
           </form>

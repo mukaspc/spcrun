@@ -95,6 +95,7 @@ function PreferencesScreen() {
 
         <form className="mt-6">
           <Input
+            masked={false}
             type="text"
             name="name"
             label="Your name"
@@ -103,7 +104,7 @@ function PreferencesScreen() {
             autoFillOff
             onChange={(e) => setName(e.target.value)}
           />
-          <Input type="file" name="file" label="Your picture" onChange={(e) => chooseFile(e)} />
+          <Input masked={false} type="file" name="file" label="Your picture" onChange={(e) => chooseFile(e)} />
 
           {validateInfo && (
             <div className="mt-2">

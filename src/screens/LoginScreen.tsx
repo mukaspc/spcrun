@@ -65,6 +65,7 @@ function LoginScreen() {
 
         <form className="mt-6 md:mt-10">
           <Input
+            masked={false}
             type="email"
             name="email"
             label="Email Address"
@@ -74,6 +75,7 @@ function LoginScreen() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <Input
+            masked={false}
             type="password"
             name="password"
             label="Password"
