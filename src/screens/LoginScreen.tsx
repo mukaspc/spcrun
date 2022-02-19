@@ -91,10 +91,10 @@ function LoginScreen() {
           )}
 
           <div className="mt-10">
-            <Button type="primary" optionalClass="mr-3" onClick={loginToApp}>
+            <Button theme="primary" optionalClass="mr-3" onClick={loginToApp}>
               Login
             </Button>
-            <Button type="secondary" onClick={registerInApp}>
+            <Button theme="secondary" onClick={registerInApp}>
               Sign Up
             </Button>
           </div>

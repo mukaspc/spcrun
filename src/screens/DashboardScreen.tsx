@@ -7,9 +7,10 @@ import { selectLoading } from '../features/loading/loadingSlice';
 import Container from '../common/Container';
 import Wrapper from '../common/Wrapper';
 import { Routes, Route, Link } from 'react-router-dom';
+import Spinner from '../common/Spinner';
 import TrainingListScreen from './TrainingListScreen';
 import AddTrainingScreen from './AddTrainingScreen';
-import Spinner from '../common/Spinner';
+import NewsScreen from './NewsScreen';
 
 function DashboardScreen() {
   const user: any = useAppSelector(selectUser);
@@ -31,11 +32,14 @@ function DashboardScreen() {
                   <Link to="/training-list">training list from dashboard</Link>
                   <br />
                   <Link to="/add-training">add</Link>
+                  <br />
+                  <Link to="/news">news</Link>
                 </>
               }
             ></Route>
             <Route path="/training-list" element={<TrainingListScreen />}></Route>
             <Route path="/add-training" element={<AddTrainingScreen />}></Route>
+            <Route path="/news" element={<NewsScreen />}></Route>
           </Routes>
         </Wrapper>
       </Container>

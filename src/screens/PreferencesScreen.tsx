@@ -113,7 +113,7 @@ function PreferencesScreen() {
           )}
 
           <div className="mt-10">
-            <Button type="primary" optionalClass="mr-3" onClick={updateLoggedProfile}>
+            <Button theme="primary" optionalClass="mr-3" onClick={updateLoggedProfile}>
               Update profile
             </Button>
           </div>

@@ -15,6 +15,8 @@ export const loadingSlice = createSlice({
   },
 });
 
+export const loadTime = 1000;
+
 export const { load } = loadingSlice.actions;
 
 export const selectLoading = (state: RootState) => state.loading.loading;

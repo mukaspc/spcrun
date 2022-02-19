@@ -7,19 +7,18 @@ import { addDoc, serverTimestamp } from '@firebase/firestore';
 import { collectionTrainingsRef } from '../firebase';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { selectUser } from '../features/user/userSlice';
-import { load } from '../features/loading/loadingSlice';
+import { load, loadTime } from '../features/loading/loadingSlice';
 import { useNavigate } from 'react-router-dom';
 
 function AddTreningScreen() {
-  const loadTime = 1000;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const user: any = useAppSelector(selectUser);
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
-  const [distance, setDistance] = useState('');
-  const [comments, setComments] = useState('');
-  const [validateInfo, setValidateInfo] = useState<string>('');
+  const [date, setDate]: [string, (date: string) => void] = useState<string>('');
+  const [time, setTime]: [string, (time: string) => void] = useState<string>('');
+  const [distance, setDistance]: [string, (distance: string) => void] = useState<string>('');
+  const [comments, setComments]: [string, (comments: string) => void] = useState<string>('');
+  const [validateInfo, setValidateInfo]: [string, (validateInfo: string) => void] = useState<string>('');
 
   const addTraningDataToFirebase = (event: React.MouseEvent<HTMLElement>): void => {
     event.preventDefault();
@@ -100,7 +99,7 @@ function AddTreningScreen() {
             )}
 
             <div className="mt-10">
-              <Button type="primary" optionalClass="mr-3" onClick={addTraningDataToFirebase}>
+              <Button theme="primary" optionalClass="mr-3" onClick={addTraningDataToFirebase}>
                 Add trening
               </Button>
             </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 
 interface ButtonProps {
-  type: string;
+  theme: string;
   optionalClass?: string;
   children: HTMLElement | string;
-  onClick: (e: React.MouseEvent<HTMLElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 const BUTTON_TYPES: { [key: string]: string } = {
@@ -14,12 +14,12 @@ const BUTTON_TYPES: { [key: string]: string } = {
     'bg-white text-green-400 border-green-400 hover:border-green-500 hover:text-green-500 active:border-green-500 active:text-green-500',
 };
 
-function Button({ type, optionalClass, children, onClick }: ButtonProps) {
+function Button({ theme, optionalClass, children, onClick }: ButtonProps) {
   const getKeyValue =
     <T extends object, U extends keyof T>(obj: T) =>
     (key: U) =>
       obj[key];
-  const buttonType = getKeyValue(BUTTON_TYPES)(type);
+  const buttonType = getKeyValue(BUTTON_TYPES)(theme);
 
   return (
     <button
