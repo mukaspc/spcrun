@@ -8,8 +8,10 @@ interface ButtonProps {
 }
 
 const BUTTON_TYPES: { [key: string]: string } = {
-  primary: 'bg-green-400 text-white border-green-400 hover:bg-green-500 hover:border-green-500',
-  secondary: 'bg-white text-green-400 border-green-400 hover:border-green-500 hover:text-green-500',
+  primary:
+    'bg-green-400 text-white border-green-400 hover:bg-green-500 hover:border-green-500 active:bg-green-500 active:border-green-500',
+  secondary:
+    'bg-white text-green-400 border-green-400 hover:border-green-500 hover:text-green-500 active:border-green-500 active:text-green-500',
 };
 
 function Button({ type, optionalClass, children, onClick }: ButtonProps) {
@@ -21,8 +23,11 @@ function Button({ type, optionalClass, children, onClick }: ButtonProps) {
 
   return (
     <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
       onClick={onClick}
-      className={`text-center py-2 px-8 rounded-sm font-medium border text-sm transition-colors ${buttonType} ${
+      className={`text-center py-2 px-8 rounded-sm font-medium border text-sm transition duration-150 ease-in-out focus:outline-none focus:ring-0 ${buttonType} ${
         optionalClass ? optionalClass : ''
       }
       `}
