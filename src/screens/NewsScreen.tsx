@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAppDispatch } from '../app/hooks';
 import { load } from '../features/loading/loadingSlice';
-import { Link } from 'react-router-dom';
 import Button from '../common/Button';
+import NewsModal from '../common/NewsModal';
 import plug from '../assets/img/spc-plug.jpg';
+import { transformDate } from '../features/date/transformDate';
 
 interface IAllNews {
   message: string;
@@ -16,7 +17,7 @@ interface INews {
   content: string;
   description: string;
   publishedAt: Date | string;
-  source: { id: number | null; name: string };
+  source: { id: number | null; name?: string };
   title: string;
   url: string;
   urlToImage: string;
@@ -24,19 +25,22 @@ interface INews {
 
 function NewsScreen() {
   const dispatch = useAppDispatch();
+  const defaultPost: INews = {
+    author: '',
+    content: '',
+    description: '',
+    publishedAt: '',
+    source: { id: null, name: '' },
+    title: '',
+    url: '',
+    urlToImage: '',
+  };
   const defaultNews: IAllNews = {
     message: '',
     news: [],
   };
+  const [post, setPost]: [INews, (post: INews) => void] = useState(defaultPost);
   const [news, setNews]: [IAllNews, (news: IAllNews) => void] = useState(defaultNews);
-
-  const transformDate = (date: string | Date): string => {
-    let newDate = '';
-    const dateObject = new Date(date);
-
-    newDate = `${dateObject.getDate()}/${dateObject.getMonth()}/${dateObject.getFullYear()}`;
-    return newDate;
-  };
 
   useEffect(() => {
     dispatch(load(false));
@@ -61,23 +65,26 @@ function NewsScreen() {
   return (
     <article>
       <h1 className="text-2xl mb-4">News</h1>
-      <ul>
+      <ul className="flex flex-wrap">
         {news.news.length ? (
           news.news.map((post, index) => (
-            <li key={`${index}_${post.publishedAt}`} className="sm:flex mb-6 last-of-type:mb-0">
-              <figure className="sm:flex w-full sm:max-w-[14rem] h-40 rounded-md overflow-hidden">
+            <li key={`${index}_${post.publishedAt}`} className="md:flex w-full md:w-1/2 mb-6 md:pr-8 last-of-type:mb-0">
+              <figure className="md:flex w-full md:min-w-[10rem] md:max-w-[10rem] h-40 rounded-md overflow-hidden">
                 <img src={post.urlToImage || plug} alt={post.title} className="w-full h-full object-cover" />
               </figure>
-              <header className="mt-4 sm:mt-0 sm:ml-8">
+              <header className="mt-4 md:mt-0 md:ml-8">
                 <span className="block text-sm text-gray-400">Published: {transformDate(post.publishedAt)}</span>
                 <h2 className="mt-2 text-lg font-medium leading-tight">{post.title}</h2>
-                <span className="block mt-2 text-sm">{post.description}</span>
                 <div className="mt-4">
-                  <Link to="/">
-                    <Button theme="secondary" optionalClass="py-1">
-                      Read more
-                    </Button>
-                  </Link>
+                  <Button
+                    theme="secondary"
+                    optionalClass="py-1"
+                    modal={true}
+                    bsTarget="#newsModal"
+                    onClick={() => setPost(post)}
+                  >
+                    Details
+                  </Button>
                 </div>
               </header>
             </li>
@@ -86,6 +93,8 @@ function NewsScreen() {
           <li className="text-sm text-gray-400">Loading posts...</li>
         )}
       </ul>
+
+      <NewsModal dataPost={post} />
     </article>
   );
 }
