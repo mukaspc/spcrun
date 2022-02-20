@@ -11,7 +11,7 @@ interface IAllNews {
 }
 
 interface INews {
-  author: number;
+  author: string;
   content: string;
   description: string;
   publishedAt: Date | string;

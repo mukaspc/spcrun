@@ -11,6 +11,7 @@ import Spinner from '../common/Spinner';
 import TrainingListScreen from './TrainingListScreen';
 import AddTrainingScreen from './AddTrainingScreen';
 import NewsScreen from './NewsScreen';
+import NotFoundScreen from './NotFoundScreen';
 
 function DashboardScreen() {
   const user: any = useAppSelector(selectUser);
@@ -39,7 +40,8 @@ function DashboardScreen() {
             ></Route>
             <Route path="/training-list" element={<TrainingListScreen />}></Route>
             <Route path="/add-training" element={<AddTrainingScreen />}></Route>
-            <Route path="/news" element={<NewsScreen />}></Route>
+            <Route path="/news" element={<NewsScreen />} />
+            <Route path="*" element={<NotFoundScreen />} />
           </Routes>
         </Wrapper>
       </Container>
