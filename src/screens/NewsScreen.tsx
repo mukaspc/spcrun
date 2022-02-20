@@ -4,6 +4,7 @@ import { useAppDispatch } from '../app/hooks';
 import { load } from '../features/loading/loadingSlice';
 import { Link } from 'react-router-dom';
 import Button from '../common/Button';
+import plug from '../assets/img/spc-plug.jpg';
 
 interface IAllNews {
   message: string;
@@ -65,12 +66,12 @@ function NewsScreen() {
           news.news.map((post, index) => (
             <li key={`${index}_${post.publishedAt}`} className="sm:flex mb-6 last-of-type:mb-0">
               <figure className="sm:flex w-full sm:max-w-[14rem] h-40 rounded-md overflow-hidden">
-                <img src={post.urlToImage} alt={post.title} className="w-full h-full object-cover" />
+                <img src={post.urlToImage || plug} alt={post.title} className="w-full h-full object-cover" />
               </figure>
               <header className="mt-4 sm:mt-0 sm:ml-8">
                 <span className="block text-sm text-gray-400">Published: {transformDate(post.publishedAt)}</span>
                 <h2 className="mt-2 text-lg font-medium leading-tight">{post.title}</h2>
-                <span className="block text-sm">{post.description}</span>
+                <span className="block mt-2 text-sm">{post.description}</span>
                 <div className="mt-4">
                   <Link to="/">
                     <Button theme="secondary" optionalClass="py-1">
