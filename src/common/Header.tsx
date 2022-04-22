@@ -3,8 +3,11 @@ import Sidenav from './Sidenav';
 import Logo from './Logo';
 import Avatar from './Avatar';
 import { logoutFromApp } from '../features/user/logoutFromApp';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const navigate = useNavigate();
+
   return (
     <>
       <nav className="relative w-full flex flex-wrap items-center justify-between pt-4 pb-2 text-gray-500 navbar navbar-light">
@@ -45,13 +48,21 @@ function Header() {
                 <Avatar />
               </a>
               <ul
-                className="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+                className="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none left-auto right-0"
                 aria-labelledby="dropdownMenuButton2"
               >
+                <li onClick={() => navigate('/profile')}>
+                  <a
+                    className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                    role="button"
+                  >
+                    My profile
+                  </a>
+                </li>
                 <li onClick={() => logoutFromApp()}>
                   <a
                     className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-                    href="#"
+                    role="button"
                   >
                     Logout
                   </a>

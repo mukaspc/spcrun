@@ -12,6 +12,7 @@ import TrainingListScreen from './TrainingListScreen';
 import AddTrainingScreen from './AddTrainingScreen';
 import NewsScreen from './NewsScreen';
 import NotFoundScreen from './NotFoundScreen';
+import ProfileScreen from './ProfileScreen';
 
 function DashboardScreen() {
   const user: any = useAppSelector(selectUser);
@@ -35,12 +36,15 @@ function DashboardScreen() {
                   <Link to="/add-training">add</Link>
                   <br />
                   <Link to="/news">news</Link>
+                  <br />
+                  <Link to="/profile">profile</Link>
                 </>
               }
             ></Route>
             <Route path="/training-list" element={<TrainingListScreen />}></Route>
             <Route path="/add-training" element={<AddTrainingScreen />}></Route>
             <Route path="/news" element={<NewsScreen />} />
+            <Route path="/profile" element={<ProfileScreen />} />
             <Route path="*" element={<NotFoundScreen />} />
           </Routes>
         </Wrapper>
