@@ -20,7 +20,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 // collection ref
-const collectionTrainingsRef = collection(db, 'trenings');
+const collectionTrainingsRef = collection(db, 'trainings');
 
 // init storage
 const storage = getStorage();

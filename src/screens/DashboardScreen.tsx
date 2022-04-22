@@ -40,7 +40,7 @@ function DashboardScreen() {
                         Start here
                       </div>
                       <Link to="/add-training">
-                        <div className="p-6">
+                        <div className="p-6 h-full">
                           <h5 className="text-gray-900 text-xl font-medium mb-2 group-hover:text-green-500">
                             ✅ Add training
                           </h5>
@@ -50,7 +50,7 @@ function DashboardScreen() {
                     </div>
                     <div className="group rounded-lg shadow-lg bg-white w-full sm:w-1/3 mt-5 sm:mt-0 sm:mr-5 hover:bg-gray-50">
                       <Link to="/training-list">
-                        <div className="p-6">
+                        <div className="p-6 h-full">
                           <h5 className="text-gray-900 text-xl font-medium mb-2 group-hover:text-green-500">
                             📊 Trainings list
                           </h5>
@@ -60,7 +60,7 @@ function DashboardScreen() {
                     </div>
                     <div className="group rounded-lg shadow-lg bg-white w-full sm:w-1/3 mt-5 sm:mt-0 hover:bg-gray-50">
                       <Link to="/news">
-                        <div className="p-6">
+                        <div className="p-6 h-full">
                           <h5 className="text-gray-900 text-xl font-medium mb-2 group-hover:text-green-500">
                             🏆 Sport news
                           </h5>

@@ -6,6 +6,7 @@ import Button from '../common/Button';
 import NewsModal from '../common/NewsModal';
 import plug from '../assets/img/spc-plug.jpg';
 import { transformDate } from '../features/date/transformDate';
+import { Link } from 'react-router-dom';
 
 interface IAllNews {
   message: string;
@@ -64,6 +65,14 @@ function NewsScreen() {
 
   return (
     <article>
+      <Link to="/">
+        <div className="absolute -top-2 left-5 inline-flex items-center mb-2 text-white bg-green-500 hover:bg-green-600 transition-bg rounded-md px-2 py-[0.1rem]">
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-2 h-2 fill-current text-white" viewBox="0 0 448 512">
+            <path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z" />
+          </svg>
+          <span className="ml-2 text-xs">Back to dashboard</span>
+        </div>
+      </Link>
       <h1 className="text-2xl mb-4">News</h1>
       <ul className="flex flex-wrap">
         {news.news.length ? (
