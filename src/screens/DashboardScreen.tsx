@@ -31,13 +31,11 @@ function DashboardScreen() {
               path="/"
               element={
                 <>
-                  <Link to="/training-list">training list from dashboard</Link>
+                  <Link to="/training-list">Trainings list</Link>
                   <br />
-                  <Link to="/add-training">add</Link>
+                  <Link to="/add-training">Add training</Link>
                   <br />
-                  <Link to="/news">news</Link>
-                  <br />
-                  <Link to="/profile">profile</Link>
+                  <Link to="/news">Sport news</Link>
                 </>
               }
             ></Route>
