@@ -8,19 +8,22 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Project avabile at [spcrun-44295.web.app](https://spcrun-44295.web.app/)
 
-# Tech stack
+💡 **Demo account**:
+example@example.com / example123
 
-React, Redux, TypeScript, Firebase, Tailwind, Git, Git hooks (prettier, eslint, commitlint)
+## Tech stack
+
+React, Redux, Axios, TypeScript, Firebase, Tailwind, Git, Git hooks (prettier, eslint, commitlint)
 
 ## Working
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
-### `npm test`
+#### `npm test`
 
-### `npm run build`
+#### `npm run build`
 
 Builds the app for production to the `build` folder.
 
@@ -28,4 +31,4 @@ Builds the app for production to the `build` folder.
 
 App deployed to firebase.
 
-### `firebase deploy`
+#### `firebase deploy`
