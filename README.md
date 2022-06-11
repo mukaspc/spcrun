@@ -13,7 +13,7 @@ example@example.com / example123
 
 ## Tech stack
 
-React, Redux, Axios, TypeScript, Firebase, Tailwind, Git, Git hooks (prettier, eslint, commitlint)
+React, Redux, Axios, Jest, Cypress, TypeScript, Firebase, Tailwind, Git, Git hooks (prettier, eslint, commitlint)
 
 ## Working
 
@@ -21,7 +21,7 @@ In the project directory, you can run:
 
 #### `npm start`
 
-#### `npm test`
+#### `npm test` or `yarn test`
 
 #### `npm run build`
 
