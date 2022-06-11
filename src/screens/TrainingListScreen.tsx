@@ -32,14 +32,16 @@ function TrainingListScreen() {
           }
         });
 
-        setTrainingList(trainings);
+        const sortedTrainings = trainings.sort(
+          (objA: TrainingList, objB: TrainingList) => new Date(objB.date).getTime() - new Date(objA.date).getTime(),
+        );
+
+        setTrainingList(sortedTrainings);
       })
       .catch((err) => {
         console.log(err.message);
       });
   }, []);
-
-  console.log('hello', trainingList);
 
   return (
     <div>
