@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface ButtonProps {
+  id?: string;
   theme: string;
   modal?: boolean;
   bsTarget?: string;
@@ -16,7 +17,7 @@ const BUTTON_TYPES: { [key: string]: string } = {
     'bg-white text-green-400 border-green-400 hover:border-green-500 hover:text-green-500 active:border-green-500 active:text-green-500',
 };
 
-function Button({ theme, modal = false, bsTarget = '', optionalClass, children, onClick }: ButtonProps) {
+function Button({ id = '', theme, modal = false, bsTarget = '', optionalClass, children, onClick }: ButtonProps) {
   const getKeyValue =
     <T extends object, U extends keyof T>(obj: T) =>
     (key: U) =>
@@ -25,6 +26,7 @@ function Button({ theme, modal = false, bsTarget = '', optionalClass, children, 
 
   return (
     <button
+      id={id}
       type="button"
       data-mdb-ripple="true"
       data-mdb-ripple-color="light"
