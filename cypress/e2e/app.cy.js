@@ -3,13 +3,41 @@ describe('App e2e test', () => {
     indexedDB.deleteDatabase('firebaseLocalStorageDb');
   });
 
+  it('should open app', () => {
+    cy.visit('http://localhost:3000/');
+  });
+
+  it('should render validation error if passing invalid login', () => {
+    const invalidData = {
+      loginFirstTry: 'example123',
+      loginSecondTry: 'notexistingacc@example123.exec',
+      pass: 'example123',
+    };
+
+    cy.get('input[name="email"]').type(invalidData.loginFirstTry);
+    cy.get('input[name="password"]').type(invalidData.pass);
+    cy.get('button#login').click();
+    cy.get('#login-error-info').should('have.text', 'The email address is badly formatted.');
+
+    cy.get('input[name="email"]').clear();
+    cy.get('input[name="email"]').type(invalidData.loginSecondTry);
+    cy.get('button#login').click();
+    cy.get('#login-error-info').should(
+      'have.text',
+      'There is no user record corresponding to this identifier. The user may have been deleted.',
+    );
+  });
+
+  it('should clear login inputs', () => {
+    cy.get('input[name="email"]').clear();
+    cy.get('input[name="password"]').clear();
+  });
+
   it('should login to app', () => {
     const demoAccount = {
       login: 'example@example.com',
       pass: 'example123',
     };
-
-    cy.visit('http://localhost:3000/');
 
     cy.get('input[name="email"]').type(demoAccount.login);
     cy.get('input[name="password"]').type(demoAccount.pass);
@@ -77,7 +105,7 @@ describe('App e2e test', () => {
 
   it('should open first loaded news in modal and compare titles', () => {
     cy.url().should('include', '/news');
-    cy.wait(1000);
+    cy.wait(2000);
 
     cy.get('#wrapper ul li')
       .first()

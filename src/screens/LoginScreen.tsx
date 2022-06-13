@@ -88,7 +88,7 @@ function LoginScreen() {
           />
 
           {validateInfo && (
-            <div className="mt-2">
+            <div id="login-error-info" className="mt-2">
               <span className="text-red-400 text-sm leading-none">{validateInfo}</span>
             </div>
           )}
