@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useAppSelector } from '../app/hooks';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from '../app/hooks';
 import { selectUser } from '../features/user/userSlice';
-import { getDocs } from 'firebase/firestore';
-import { collectionTrainingsRef } from '../firebase';
+import { getDocs, deleteDoc, doc } from 'firebase/firestore';
+import db, { collectionTrainingsRef } from '../firebase';
 import { transformDate } from '../features/date/transformDate';
+import { load, loadTime } from '../features/loading/loadingSlice';
 interface TrainingList {
   comments?: string;
   date: string;
@@ -15,6 +16,8 @@ interface TrainingList {
 }
 
 function TrainingListScreen() {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [trainingList, setTrainingList] = useState<[]>([]);
   const user: any = useAppSelector(selectUser);
   const { uid } = user;
@@ -42,6 +45,19 @@ function TrainingListScreen() {
         console.log(err.message);
       });
   }, []);
+
+  const deleteTraining = (id: string): void => {
+    const docRef = doc(db, 'trainings', id);
+
+    deleteDoc(docRef).then(() => {
+      dispatch(load(true));
+
+      setTimeout(() => {
+        dispatch(load(false));
+        navigate('/training-list');
+      }, loadTime);
+    });
+  };
 
   return (
     <div>
@@ -78,15 +94,18 @@ function TrainingListScreen() {
                       <th scope="col" className="text-white text-sm font-medium px-6 py-4">
                         ⏱️ TIME
                       </th>
-                      <th scope="col" className="text-white rounded-tr-lg text-sm font-medium px-6 py-4">
+                      <th scope="col" className="text-white text-sm font-medium px-6 py-4">
                         📝 COMMENTS
+                      </th>
+                      <th scope="col" className="text-white rounded-tr-lg text-sm font-medium px-6 py-4">
+                        🚀
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     {trainingList.length ? (
                       trainingList.map((training: TrainingList, index) => (
-                        <tr className="border-b" key={`${index}_${training.id}`}>
+                        <tr className="border-b hover:bg-gray-100" key={`${index}_${training.id}`}>
                           <th className="text-sm font-medium px-6 py-4 whitespace-nowrap text-left" scope="row">
                             {transformDate(training.date)}
                           </th>
@@ -98,6 +117,11 @@ function TrainingListScreen() {
                           </td>
                           <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
                             {training.comments || '-'}
+                          </td>
+                          <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
+                            <span className="cursor-pointer" onClick={() => deleteTraining(training.id)}>
+                              ❌
+                            </span>
                           </td>
                         </tr>
                       ))
