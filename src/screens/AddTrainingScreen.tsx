@@ -107,7 +107,7 @@ function AddTreningScreen() {
             )}
 
             <div className="mt-10">
-              <Button theme="primary" optionalClass="mr-3" onClick={addTraningDataToFirebase}>
+              <Button id="add-training" theme="primary" optionalClass="mr-3" onClick={addTraningDataToFirebase}>
                 Add trening
               </Button>
             </div>
