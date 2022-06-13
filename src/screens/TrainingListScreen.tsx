@@ -82,7 +82,7 @@ function TrainingListScreen() {
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-hidden">
-                <table className="min-w-full mb-0">
+                <table id="training-table" className="min-w-full mb-0">
                   <thead className="border-b rounded-t-lg text-left bg-gray-900">
                     <tr>
                       <th scope="col" className="text-white rounded-tl-lg text-sm font-medium px-6 py-4">
@@ -119,7 +119,7 @@ function TrainingListScreen() {
                             {training.comments || '-'}
                           </td>
                           <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
-                            <span className="cursor-pointer" onClick={() => deleteTraining(training.id)}>
+                            <span className="cursor-pointer delete" onClick={() => deleteTraining(training.id)}>
                               ❌
                             </span>
                           </td>

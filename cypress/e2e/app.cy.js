@@ -51,7 +51,7 @@ describe('App e2e test', () => {
       date: '1999-12-24',
       time: '19:46',
       distance: '04.55',
-      comments: 'City run',
+      comments: 'Testing city run',
     };
 
     cy.get('a[href="/add-training"]').click();
@@ -66,7 +66,14 @@ describe('App e2e test', () => {
     cy.url().should('include', '/training-list');
   });
 
+  it('should delete added testing training', () => {
+    cy.url().should('include', '/training-list');
+    cy.wait(1000);
+    cy.get('#training-table').find('th').contains('24/12/1999').parent().find('span.delete').click();
+  });
+
   it('should open profile page', () => {
+    cy.wait(1000);
     cy.get('a#profileDropdown').click();
     cy.get('ul[aria-labelledby="profileDropdown"]').contains('My profile').click();
 
@@ -105,7 +112,7 @@ describe('App e2e test', () => {
 
   it('should open first loaded news in modal and compare titles', () => {
     cy.url().should('include', '/news');
-    cy.wait(2000);
+    cy.wait(3000);
 
     cy.get('#wrapper ul li')
       .first()

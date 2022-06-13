@@ -39,7 +39,6 @@ function Header() {
             <div className="dropdown relative">
               <a
                 className="dropdown-toggle flex items-center hidden-arrow rounded-full overflow-hidden bg-gray-300"
-                href="#"
                 id="profileDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
