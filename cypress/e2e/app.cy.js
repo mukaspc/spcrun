@@ -11,15 +11,10 @@ describe('App e2e test', () => {
 
     cy.visit('http://localhost:3000/');
 
-    const emailInput = cy.get('input[name="email"]');
-    emailInput.type(demoAccount.login);
+    cy.get('input[name="email"]').type(demoAccount.login);
+    cy.get('input[name="password"]').type(demoAccount.pass);
 
-    const passwordInput = cy.get('input[name="password"]');
-    passwordInput.type(demoAccount.pass);
-
-    const loginButton = cy.get('button#login');
-    loginButton.click();
-
+    cy.get('button#login').click();
     cy.url().should('include', '/');
   });
 
@@ -30,27 +25,78 @@ describe('App e2e test', () => {
       distance: '04.55',
       comments: 'City run',
     };
-    const addTraining = cy.get('a[href="/add-training"]');
 
-    addTraining.click();
-
+    cy.get('a[href="/add-training"]').click();
     cy.url().should('include', '/add-training');
 
-    const dateInput = cy.get('input[name="date"]');
-    dateInput.type(trainingLogs.date);
-
-    const timeInput = cy.get('input[name="time"]');
-    timeInput.type(trainingLogs.time);
-
-    const distanceInput = cy.get('input[name="distance"]');
-    distanceInput.type(trainingLogs.distance);
-
-    const commentsInput = cy.get('textarea[name="comments"]');
-    commentsInput.type(trainingLogs.comments);
-
-    const addButton = cy.get('button#add-training');
-    addButton.click();
+    cy.get('input[name="date"]').type(trainingLogs.date);
+    cy.get('input[name="time"]').type(trainingLogs.time);
+    cy.get('input[name="distance"]').type(trainingLogs.distance);
+    cy.get('textarea[name="comments"]').type(trainingLogs.comments);
+    cy.get('button#add-training').click();
 
     cy.url().should('include', '/training-list');
+  });
+
+  it('should open profile page', () => {
+    cy.get('a#profileDropdown').click();
+    cy.get('ul[aria-labelledby="profileDropdown"]').contains('My profile').click();
+
+    cy.url().should('include', '/profile');
+  });
+
+  it('should open navigation with label', () => {
+    cy.get('button#main-nav').click();
+    cy.get('#navigationLabel').contains('Navigation 🔥');
+  });
+
+  it('should navigate from opened sidebar to homepage', () => {
+    cy.get('.offcanvas-body').find('a[href="/"]').click();
+
+    cy.url().should('include', '/');
+  });
+
+  it('should navigate from closed sidebar to training list', () => {
+    cy.get('button#main-nav').click();
+    cy.get('.offcanvas-body').find('a[href="/training-list"]').click();
+
+    cy.url().should('include', '/training-list');
+  });
+
+  it('should main logo navigate to main dashboard', () => {
+    cy.get('nav.navbar').find('a[href="/"]').click();
+
+    cy.url().should('include', '/');
+  });
+
+  it('should open new section from dashboard', () => {
+    cy.url().should('include', '/');
+
+    cy.get('#wrapper').find('a[href="/news"]').click();
+  });
+
+  it('should open first loaded news in modal and compare titles', () => {
+    cy.url().should('include', '/news');
+    cy.wait(1000);
+
+    cy.get('#wrapper ul li')
+      .first()
+      .find('h2')
+      .invoke('text')
+      .then((text) => {
+        cy.get('#wrapper ul li').first().find('button').contains('Details').click();
+        cy.get('.news-modal').find('#newsModalLabel').should('have.text', text);
+      });
+
+    cy.wait(1000);
+    cy.get('.news-modal').find('button[data-bs-dismiss="modal"]').click();
+  });
+
+  it('should logout from the app', () => {
+    cy.get('button#main-nav').click();
+    cy.get('.offcanvas-body').find('span').contains('Logout').click();
+
+    cy.url().should('include', '/');
+    cy.get('#login-section');
   });
 });

@@ -14,6 +14,7 @@ function Header() {
         <div className="container-fluid w-full flex flex-wrap items-center justify-between pr-4 pl-2">
           <div className="flex items-center">
             <button
+              id="main-nav"
               className="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
               type="button"
               data-bs-toggle="offcanvas"
@@ -39,7 +40,7 @@ function Header() {
               <a
                 className="dropdown-toggle flex items-center hidden-arrow rounded-full overflow-hidden bg-gray-300"
                 href="#"
-                id="dropdownMenuButton2"
+                id="profileDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -49,7 +50,7 @@ function Header() {
               </a>
               <ul
                 className="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 m-0 bg-clip-padding border-none left-auto right-0"
-                aria-labelledby="dropdownMenuButton2"
+                aria-labelledby="profileDropdown"
               >
                 <li onClick={() => navigate('/profile')}>
                   <a

@@ -52,7 +52,10 @@ function LoginScreen() {
 
   return (
     <article className="flex h-screen flex-col md:flex-row">
-      <section className="flex flex-col md:h-full md:justify-center w-full md:w-2/6 p-5 lg:p-12 bg-white">
+      <section
+        id="login-section"
+        className="flex flex-col md:h-full md:justify-center w-full md:w-2/6 p-5 lg:p-12 bg-white"
+      >
         <header>
           <Logo />
           <div className="mt-10 lg:mt-16">
